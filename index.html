@@ -13,10 +13,8 @@
         }
 
         body {
-            /* Görseldeki gibi derin gece mavisi, lacivert ve parıltılı tonlar */
-            background: linear-gradient(135deg, #091a2f, #0f2b48, #1a3c61, #0a1f36);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            /* İstediğin gibi tamamen siyah arka plan */
+            background: #000000;
             color: #ffffff;
             min-height: 100vh;
             overflow: hidden;
@@ -26,25 +24,18 @@
             position: relative;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Arka Plandaki Sabit Parıltı Yıldız Efektleri */
+        /* Arka Plandaki Sabit Parıltı Yıldız Efektleri (Siyah arka planda çok daha şık duracak) */
         body::before {
             content: "";
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 20px);
-            background-size: 550px 550px, 350px 350px, 250px 250px;
-            background-position: 0 0, 40px 60px, 130px 270px;
-            opacity: 0.4;
+                radial-gradient(rgba(255, 255, 255, 0.3), rgba(255,255,255,0) 2px, transparent 40px),
+                radial-gradient(rgba(255, 255, 255, 0.2), rgba(255,255,255,0) 1px, transparent 30px);
+            background-size: 400px 400px, 250px 250px;
+            background-position: 0 0, 40px 60px;
+            opacity: 0.6;
             z-index: 0;
         }
 
@@ -64,7 +55,7 @@
         .heart {
             position: absolute;
             bottom: -20px;
-            color: rgba(255, 182, 193, 0.7); /* Görseldeki gibi daha soft, buzlu pembe kalpler */
+            color: rgba(255, 192, 203, 0.75); /* Parlayan soft pembe kalpler */
             font-size: 20px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
             animation: floatUp linear infinite;
@@ -83,17 +74,17 @@
             }
         }
 
-        /* Ana Konteyner - Görseldeki Premium Cam (Glassmorphism) Efekti */
+        /* Ana Konteyner - Tamamen Siyah Üzerinde Parlayan Cam (Glassmorphism) Efekti */
         .container {
             width: 90%;
             max-width: 650px;
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.04); /* Ultra saydam cam tabanı */
+            backdrop-filter: blur(25px); /* Güçlü buzlu cam efekti */
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.18); /* Net cam çerçeve çizgisi */
             padding: 45px 40px;
             border-radius: 30px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.05);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.02);
             text-align: center;
             z-index: 10;
             position: relative;
@@ -127,7 +118,6 @@
         h1 {
             font-size: 2.6rem;
             margin-bottom: 25px;
-            /* Görseldeki tatlı pembe/beyaz geçişli yazı stili */
             background: linear-gradient(to right, #ffb6c1, #ffe4e1, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -139,14 +129,14 @@
         .typewriter-text {
             font-size: 1.15rem;
             line-height: 1.8;
-            color: #e2ebf5;
+            color: #f0f4f8;
             margin-bottom: 35px;
-            min-height: 120px; /* Sayfa yüksekliğinin zıplamasını önler */
+            min-height: 120px; 
             white-space: pre-line;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
         }
 
-        /* Premium Buton - Görseldeki Canlı Pembe / Altın Detay Esintili */
+        /* Premium Pembe Buton */
         .btn {
             background: linear-gradient(45deg, #ff5376, #ff758c);
             color: white;
@@ -156,10 +146,10 @@
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(255, 83, 118, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 83, 118, 0.3);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             outline: none;
-            opacity: 0; /* Yazı bitene kadar butonu gizliyoruz */
+            opacity: 0; 
             transform: translateY(10px);
             pointer-events: none;
         }
@@ -172,25 +162,12 @@
 
         .btn:hover {
             transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(255, 83, 118, 0.6);
+            box-shadow: 0 15px 30px rgba(255, 83, 118, 0.5);
             background: linear-gradient(45deg, #ff758c, #ff5376);
         }
 
         .btn:active {
             transform: translateY(-1px);
-        }
-
-        /* İmza */
-        .footer-sign {
-            position: absolute;
-            bottom: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Georgia', serif;
-            font-style: italic;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -233,8 +210,6 @@
             <p class="typewriter-text"></p>
             <button class="btn" onclick="restartJourney()">Başa Dön 🔄</button>
         </div>
-
-        <div class="footer-sign">By Wastier</div>
     </div>
 
     <script>
@@ -242,7 +217,6 @@
         let heartInterval;
         let typingTimeout;
 
-        // Sayfa ilk yüklendiğinde 1. sayfanın yazısını başlat
         window.onload = function() {
             typeWriterEffect(1);
         };
@@ -255,14 +229,14 @@
             }
             
             if(!heartInterval) {
-                heartInterval = setInterval(createHeart, 250); // Kalp sıklığı optimize edildi
+                heartInterval = setInterval(createHeart, 250); 
             }
 
             nextPage(2);
         }
 
         function nextPage(pageNumber) {
-            clearTimeout(typingTimeout); // Önceki sayfadan kalan yazı animasyonu varsa temizle
+            clearTimeout(typingTimeout); 
 
             const activePage = document.querySelector('.page.active');
             if (activePage) {
@@ -273,13 +247,11 @@
                 const targetPage = document.getElementById('page' + pageNumber);
                 if (targetPage) {
                     targetPage.classList.add('active');
-                    // Yeni sayfa açılınca yazı efektini tetikle
                     typeWriterEffect(pageNumber);
                 }
             }, 50);
         }
 
-        // Akıcı, "Çok yavaş olmayan" Harf/Kelime Yazma Efekti
         function typeWriterEffect(pageNumber) {
             const page = document.getElementById('page' + pageNumber);
             const textContainer = page.querySelector('.typewriter-text');
@@ -287,10 +259,9 @@
             const fullText = page.getAttribute('data-text');
             
             textContainer.textContent = "";
-            btn.classList.remove('show'); // Butonu başlangıçta gizle
+            btn.classList.remove('show'); 
 
             let index = 0;
-            // Yazma hızı: Her harf arası milisaniye (Dengeli akıcılık için 25ms yapıldı)
             const speed = 25; 
 
             function type() {
@@ -299,14 +270,12 @@
                     index++;
                     typingTimeout = setTimeout(type, speed);
                 } else {
-                    // Yazı tamamen bittiğinde butonu pürüzsüzce göster
                     btn.classList.add('show');
                 }
             }
             type();
         }
 
-        // Kalp oluşturma mekanizması (Sağ ve Sol)
         function createHeart() {
             const leftArea = document.getElementById('leftHearts');
             const rightArea = document.getElementById('rightHearts');
@@ -314,7 +283,7 @@
             
             const heart = document.createElement('div');
             heart.classList.add('heart');
-            heart.innerHTML = '🤍'; // Görselle uyumlu parlayan soft beyaz/pembe kalp
+            heart.innerHTML = '🤍'; 
             
             const size = Math.random() * 14 + 10; 
             const duration = Math.random() * 3 + 4; 
