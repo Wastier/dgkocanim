@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İyi Ki Doğdun Sevgilim ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c1b, #200a2b, #4d1234);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Sabit Kalp Alanları (Sağ ve Sol) */
+        .heart-area {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 15vw;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .left-area { left: 0; }
+        .right-area { right: 0; }
+
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            color: rgba(255, 75, 110, 0.8);
+            font-size: 20px;
+            text-shadow: 0 0 10px rgba(255, 75, 110, 0.5);
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-105vh) translateX(var(--randomX)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Ana Konteyner */
+        .container {
+            width: 90%;
+            max-width: 650px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px border-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Sayfa Yönetimi */
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeInUp 1.2s forwards ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tipografi & İçerik */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3, #ffb3ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #e0d5e6;
+            margin-bottom: 30px;
+            white-space: pre-line;
+        }
+
+        /* Premium Buton */
+        .btn {
+            background: linear-gradient(45deg, #ff4b6e, #ff758c);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 75, 110, 0.3);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 75, 110, 0.5);
+            background: linear-gradient(45deg, #ff758c, #ff4b6e);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Müzik Elementi -->
+    <audio id="bgMusic" src="sarki.mp3" loop></audio>
+
+    <!-- Kalplerin Uçacağı Sağ ve Sol Boşluklar -->
+    <div class="heart-area left-area" id="leftHearts"></div>
+    <div class="heart-area right-area" id="rightHearts"></div>
+
+    <div class="container">
+        
+        <!-- SAYFA 1: GİRİŞ -->
+        <div class="page active" id="page1">
+            <h1>Senin İçin Küçük Bir Sürpriz... ✨</h1>
+            <p>Hayatımın en güzel detayına, dünyamı güzelleştiren kadına minik bir yolculuk. 
+            Hazırsan aşağıdaki butona basıp arkana yaslan sevgilim.</p>
+            <button class="btn" onclick="startJourney()">Yolculuğa Başla ❤️</button>
+        </div>
+
+        <!-- SAYFA 2: İYİ Kİ VARSIN -->
+        <div class="page" id="page2">
+            <h1>İyi Ki Doğdun Dünyam 🎂</h1>
+            <p>Bugün sıradan bir gün değil; seninle birlikte dünyaya neşenin, zarafetin ve sevginin adım attığı gün. 
+
+            Hayatıma girdiğin andan beri her günümü güzelleştirdiğin, bana sevmeyi ve sevilmeyi en saf haliyle hissettirdiğin için teşekkür ederim. İyi ki doğdun, iyi ki benim oldun.</p>
+            <button class="btn" onclick="nextPage(3)">Devam Et ✨</button>
+        </div>
+
+        <!-- SAYFA 3: EN GÜZEL ANILAR -->
+        <div class="page" id="page3">
+            <h1>Seninle Her Anım Çok Özel... 💫</h1>
+            <p>Gözlerine her baktığımda, seninle geçirdiğim her saniyede ne kadar şanslı olduğumu bir kez daha anlıyorum. 
+
+            Gülüşün kalbimin en huzurlu köşesi. Seninle kurduğumuz hayaller, paylaştığımız her sessizlik bile benim için paha biçilemez. Hayatımın geri kalanında da her doğum gününde elini tutan adam olmak istiyorum.</p>
+            <button class="btn" onclick="nextPage(4)">Sonsuza Dek 🌹</button>
+        </div>
+
+        <!-- SAYFA 4: SON -->
+        <div class="page" id="page4">
+            <h1>Seni Çok Seviyorum ❤️</h1>
+            <p>Yeni yaşında kalbinden geçen tüm güzellikler seni bulsun sevgilim. Umutların, neşen ve o güzel yüzündeki gülümseme hiç eksilmesin. 
+
+            Ben her anında, her adımında, her yeni yaşında senin tam yanında olacağım. Doğum günün kutlu olsun her şeyim, iyi ki varsın!</p>
+            <button class="btn" onclick="restartJourney()">Başa Dön 🔄</button>
+        </div>
+
+    </div>
+
+    <script>
+        let musicStarted = false;
+        let heartInterval;
+
+        // İlk butona tıklandığında müzik ve kalpleri başlatır
+        function startJourney() {
+            if (!musicStarted) {
+                const music = document.getElementById('bgMusic');
+                music.play().catch(error => console.log("Müzik çalma yetkisi bekleniyor:", error));
+                musicStarted = true;
+            }
+            
+            // Kalp yağmurunu başlat
+            if(!heartInterval) {
+                heartInterval = setInterval(createHeart, 300);
+            }
+
+            nextPage(2);
+        }
+
+        // Sayfa değiştirme fonksiyonu (Pürüzsüz geçişli)
+        function nextPage(pageNumber) {
+            // Aktif sayfayı bul ve kapat
+            const activePage = document.querySelector('.page.active');
+            if (activePage) {
+                activePage.classList.remove('active');
+            }
+
+            // Yeni sayfayı aktif et
+            setTimeout(() => {
+                const targetPage = document.getElementById('page' + pageNumber);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+            }, 50); // Tarayıcının pürüzsüz geçişi yakalaması için küçük bir gecikme
+        }
+
+        // Kalp oluşturma mekanizması
+        function createHeart() {
+            const leftArea = document.getElementById('leftHearts');
+            const rightArea = document.getElementById('rightHearts');
+            
+            // Rastgele sol veya sağ alanı seçer
+            const targetArea = Math.random() > 0.5 ? leftArea : rightArea;
+            
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            
+            // Rastgele boyut, hız ve yatay sapma (X ekseni)
+            const size = Math.random() * 15 + 12; // 12px - 27px arası
+            const duration = Math.random() * 3 + 4; // 4s - 7s arası süzülme
+            const randomX = (Math.random() * 60 - 30) + 'px'; // Sağa sola hafif salınım
+            const startLeft = Math.random() * 85 + '%'; // Bölge içindeki rastgele yatay konum
+
+            heart.style.fontSize = size + 'px';
+            heart.style.animationDuration = duration + 's';
+            heart.style.left = startLeft;
+            heart.style.setProperty('--randomX', randomX);
+            
+            targetArea.appendChild(heart);
+            
+            // Animasyon bittiğinde DOM'dan temizle (Tarayıcıyı yormamak için)
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Başa dönmek istenirse
+        function restartJourney() {
+            nextPage(1);
+        }
+    </script>
+</body>
+</html>

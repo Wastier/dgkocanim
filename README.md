@@ -1,2 +1,0 @@
-# dgkocanim
-asdasdasd
