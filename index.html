@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İyi Ki Doğdun Sevgilim ✨</title>
+    <title>İyi Ki Doğdun Sevgilim</title>
     <style>
         * {
             margin: 0;
@@ -13,8 +13,10 @@
         }
 
         body {
-            /* İstediğin gibi tamamen siyah arka plan */
-            background: #000000;
+            /* Siyah-Beyaz / Antrasit lüks degrade arka plan */
+            background: linear-gradient(135deg, #050505, #121212, #1a1a1a, #000000);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: #ffffff;
             min-height: 100vh;
             overflow: hidden;
@@ -24,18 +26,24 @@
             position: relative;
         }
 
-        /* Arka Plandaki Sabit Parıltı Yıldız Efektleri (Siyah arka planda çok daha şık duracak) */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Gümüş Yıldız Tozu Efekti */
         body::before {
             content: "";
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(rgba(255, 255, 255, 0.3), rgba(255,255,255,0) 2px, transparent 40px),
-                radial-gradient(rgba(255, 255, 255, 0.2), rgba(255,255,255,0) 1px, transparent 30px);
+                radial-gradient(rgba(255, 255, 255, 0.25), rgba(255,255,255,0) 2px, transparent 40px),
+                radial-gradient(rgba(255, 255, 255, 0.15), rgba(255,255,255,0) 1px, transparent 30px);
             background-size: 400px 400px, 250px 250px;
             background-position: 0 0, 40px 60px;
-            opacity: 0.6;
+            opacity: 0.7;
             z-index: 0;
         }
 
@@ -55,9 +63,9 @@
         .heart {
             position: absolute;
             bottom: -20px;
-            color: rgba(255, 192, 203, 0.75); /* Parlayan soft pembe kalpler */
+            color: rgba(240, 240, 240, 0.5); /* Siyah-beyaz temaya uygun kristal beyaz kalpler */
             font-size: 20px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
             animation: floatUp linear infinite;
         }
 
@@ -74,35 +82,20 @@
             }
         }
 
-        /* Ana Konteyner - Tamamen Siyah Üzerinde Parlayan Cam (Glassmorphism) Efekti */
+        /* Ana Konteyner - Gümüş Çerçeveli Lüks Cam Efekti */
         .container {
             width: 90%;
             max-width: 650px;
-            background: rgba(255, 255, 255, 0.04); /* Ultra saydam cam tabanı */
-            backdrop-filter: blur(25px); /* Güçlü buzlu cam efekti */
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(25px); 
             -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.18); /* Net cam çerçeve çizgisi */
-            padding: 45px 40px;
-            border-radius: 30px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.15); /* İnce gümüş kontür çizgisi */
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(255, 255, 255, 0.01);
             text-align: center;
             z-index: 10;
             position: relative;
-        }
-
-        /* Üstteki Dekoratif Parlayan Kalp */
-        .top-glow-heart {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            display: inline-block;
-            filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));
-            animation: pulse 2s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
         }
 
         /* Sayfa Yönetimi */
@@ -114,11 +107,11 @@
             display: block;
         }
 
-        /* Tipografi & İçerik */
+        /* Tipografi & İçerik - Saf Beyaz ve Gümüş Geçişleri */
         h1 {
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             margin-bottom: 25px;
-            background: linear-gradient(to right, #ffb6c1, #ffe4e1, #ffffff);
+            background: linear-gradient(to right, #ffffff, #cccccc, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 700;
@@ -129,29 +122,30 @@
         .typewriter-text {
             font-size: 1.15rem;
             line-height: 1.8;
-            color: #f0f4f8;
+            color: #e0e0e0;
             margin-bottom: 35px;
             min-height: 120px; 
             white-space: pre-line;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* Premium Pembe Buton */
+        /* Premium Gümüş/Beyaz Buton */
         .btn {
-            background: linear-gradient(45deg, #ff5376, #ff758c);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 15px 40px;
-            font-size: 1.05rem;
+            background: linear-gradient(45deg, #ededed, #ffffff);
+            color: #0a0a0a; /* Siyah yazı kontrastı */
+            border: 1px solid rgba(255,255,255,0.8);
+            padding: 15px 42px;
+            font-size: 1rem;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(255, 83, 118, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             outline: none;
             opacity: 0; 
             transform: translateY(10px);
             pointer-events: none;
+            letter-spacing: 0.5px;
         }
 
         .btn.show {
@@ -161,9 +155,9 @@
         }
 
         .btn:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(255, 83, 118, 0.5);
-            background: linear-gradient(45deg, #ff758c, #ff5376);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.25);
+            background: linear-gradient(45deg, #ffffff, #ededed);
         }
 
         .btn:active {
@@ -179,36 +173,35 @@
     <div class="heart-area right-area" id="rightHearts"></div>
 
     <div class="container">
-        <div class="top-glow-heart">🤍</div>
         
         <div class="page active" id="page1" data-text="Hayatımın en güzel detayına, dünyamı güzelleştiren kadına minik bir yolculuk. Hazırsan aşağıdaki butona basıp arkana yaslan sevgilim.">
-            <h1>Senin İçin Küçük Bir Sürpriz... ✨</h1>
+            <h1>Senin İçin Küçük Bir Sürpriz...</h1>
             <p class="typewriter-text"></p>
-            <button class="btn" onclick="startJourney()">Yolculuğa Başla ❤️</button>
+            <button class="btn" onclick="startJourney()">Yolculuğa Başla</button>
         </div>
 
         <div class="page" id="page2" data-text="Bugün sıradan bir gün değil; seninle birlikte dünyaya neşenin, zarafetin ve sevginin adım attığı gün. 
 
         Hayatıma girdiğin andan beri her günümü güzelleştirdiğin, bana sevmeyi ve sevilmeyi en saf haliyle hissettirdiğin için teşekkür ederim. İyi ki doğdun, iyi ki benim oldun.">
-            <h1>İyi Ki Doğdun Dünyam 🎂</h1>
+            <h1>İyi Ki Doğdun Dünyam</h1>
             <p class="typewriter-text"></p>
-            <button class="btn" onclick="nextPage(3)">Devam Et ✨</button>
+            <button class="btn" onclick="nextPage(3)">Devam Et</button>
         </div>
 
         <div class="page" id="page3" data-text="Gözlerine her baktığımda, seninle geçirdiğim her saniyede ne kadar şanslı olduğumu bir kez daha anlıyorum. 
 
         Gülüşün kalbimin en huzurlu köşesi. Seninle kurduğumuz hayaller, paylaştığımız her sessizlik bile benim için paha biçilemez. Hayatımın geri kalanında da her doğum gününde elini tutan adam olmak istiyorum.">
-            <h1>Seninle Her Anım Çok Özel... 💫</h1>
+            <h1>Seninle Her Anım Çok Özel...</h1>
             <p class="typewriter-text"></p>
-            <button class="btn" onclick="nextPage(4)">Sonsuza Dek 🌹</button>
+            <button class="btn" onclick="nextPage(4)">Sonsuza Dek</button>
         </div>
 
         <div class="page" id="page4" data-text="Yeni yaşında kalbinden geçen tüm güzellikler seni bulsun sevgilim. Umutların, neşen ve o güzel yüzündeki gülümseme hiç eksilmesin. 
 
         Ben her anında, her adımında, her yeni yaşında senin tam yanında olacağım. Doğum günün kutlu olsun her şeyim, iyi ki varsın!">
-            <h1>Seni Çok Seviyorum ❤️</h1>
+            <h1>Seni Çok Seviyorum</h1>
             <p class="typewriter-text"></p>
-            <button class="btn" onclick="restartJourney()">Başa Dön 🔄</button>
+            <button class="btn" onclick="restartJourney()">Başa Dön</button>
         </div>
     </div>
 
@@ -228,8 +221,9 @@
                 musicStarted = true;
             }
             
+            // Kalp uçma mekanizmasını buton tıklandığı an aktif ediyoruz
             if(!heartInterval) {
-                heartInterval = setInterval(createHeart, 250); 
+                heartInterval = setInterval(createHeart, 200); // 200ms ile akıcı kalp yoğunluğu
             }
 
             nextPage(2);
@@ -276,6 +270,7 @@
             type();
         }
 
+        // Sağ ve soldan uçan kalpler fonksiyonu
         function createHeart() {
             const leftArea = document.getElementById('leftHearts');
             const rightArea = document.getElementById('rightHearts');
@@ -283,7 +278,7 @@
             
             const heart = document.createElement('div');
             heart.classList.add('heart');
-            heart.innerHTML = '🤍'; 
+            heart.innerHTML = '🤍'; // Siyah-beyaz konsepte tam oturan şık beyaz kalp
             
             const size = Math.random() * 14 + 10; 
             const duration = Math.random() * 3 + 4; 
